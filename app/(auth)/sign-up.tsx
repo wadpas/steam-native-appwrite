@@ -10,28 +10,28 @@ import { useGlobalContext } from '../../context/GlobalProvider'
 const logo = require('../../assets/images/logo.svg')
 
 const SingUp = () => {
+  const [isSubmitting, setSubmitting] = useState(false)
+  const { setUser, setIsLogged } = useGlobalContext()
   const [form, setForm] = useState({
     username: '',
     email: '',
     password: '',
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const { setUser, setIsLogged } = useGlobalContext()
 
-  const handleSubmit = async () => {
+  const submit = async () => {
     if (!form.username && !form.email && !form.password) {
       Alert.alert('Error', 'Please fill in all fields')
     }
-    setIsSubmitting(true)
+    setSubmitting(true)
     try {
-      const user = createUser(form.email, form.password, form.username)
+      const user = await createUser(form.email, form.password, form.username)
       setUser(user)
       setIsLogged(true)
       router.replace('/home')
     } catch (error: any) {
       Alert.alert('Error', error.message)
     } finally {
-      setIsSubmitting(false)
+      setSubmitting(false)
     }
   }
 
@@ -41,9 +41,9 @@ const SingUp = () => {
       <View></View>
       <FormField
         title='Username'
-        value={form.email}
+        value={form.username}
         placeholder='Enter your username'
-        handleChangeText={(e: any) => setForm({ ...form, email: e })}
+        handleChangeText={(e: any) => setForm({ ...form, username: e })}
       />
       <FormField
         title='Email'
@@ -61,7 +61,7 @@ const SingUp = () => {
       <View></View>
       <CustomButton
         title='Sign Up'
-        handlePress={handleSubmit}
+        handlePress={submit}
         isLoading={isSubmitting}
       />
       <Text className='text-white '>

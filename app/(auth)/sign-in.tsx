@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, router, RelativePathString } from 'expo-router'
 import { View, Text, ScrollView, Image, Alert } from 'react-native'
-import { singIn } from '@/lib/appwrite'
 
+import { singIn } from '@/lib/appwrite'
 import { useGlobalContext } from '../../context/GlobalProvider'
 import FormField from '@/components/FormField'
 import CustomButton from '@/components/CustomButton'
@@ -14,21 +14,21 @@ const SingIn = () => {
     email: '',
     password: '',
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setSubmitting] = useState(false)
   const { setUser, setIsLogged } = useGlobalContext()
 
-  const handleSubmit = async () => {
+  const submit = async () => {
     if (!form.email && !form.password) {
       Alert.alert('Error', 'Please fill in all fields')
     }
+    setSubmitting(true)
     try {
       const user = await singIn(form.email, form.password)
       setUser(user)
       setIsLogged(true)
       router.replace('/home')
-      router.replace('/home')
-    } catch (error: any) {
-      Alert.alert('Error', error.message)
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -52,7 +52,7 @@ const SingIn = () => {
       <View></View>
       <CustomButton
         title='Sign In'
-        handlePress={handleSubmit}
+        handlePress={submit}
         isLoading={isSubmitting}
       />
       <Text className='text-white '>
