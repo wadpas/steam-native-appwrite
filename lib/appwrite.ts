@@ -84,3 +84,16 @@ export const getBooks = async () => {
     throw new Error('Error getting books')
   }
 }
+
+export const searchBooks = async (query: any) => {
+  try {
+    const posts = await databases.listDocuments(config.databaseId, config.booksCollectionId, [
+      Query.search('title', query),
+    ])
+    console.log(posts.documents)
+    return posts.documents
+  } catch (error) {
+    console.log(error)
+    throw new Error('Error getting books')
+  }
+}

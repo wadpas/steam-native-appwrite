@@ -1,28 +1,36 @@
-import { View, Text, TextInput, Pressable } from 'react-native'
+import { View, Text, TextInput, Pressable, Alert } from 'react-native'
 import React, { useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { router, usePathname } from 'expo-router'
 
-const SearchInput = ({ title, value, placeholder, handleChangeText, keyboardType }: any) => {
-  const [showPassword, setShowPassword] = useState(false)
+const SearchInput = ({ initialValue }: any) => {
+  const pathName = usePathname()
+  const [query, setQuery] = useState(initialValue || '')
 
   return (
-    <View className='w-full space-y-1'>
-      <Text className='ml-3 text-white'>{title}</Text>
+    <View className='w-full mt-3'>
       <TextInput
         className='p-4 text-white bg-gray-800 rounded-xl'
-        value={value}
+        value={query}
         placeholder={'Search books'}
         placeholderTextColor='#4B5563'
-        onChangeText={handleChangeText}
-        keyboardType={keyboardType}
-        secureTextEntry={title === 'Password' && !showPassword}
+        onChangeText={(e) => setQuery(e)}
       />
       <Pressable
         className='absolute right-3 bottom-3'
-        onPress={() => setShowPassword(!showPassword)}>
+        onPress={() => {
+          if (!query) {
+            return Alert.alert('Please enter a search term')
+          }
+          if (pathName.startsWith('/search')) {
+            router.setParams({ query })
+          } else {
+            router.push(`/search/${query}`)
+          }
+        }}>
         <Ionicons
           name={'search'}
-          color='#EF4444'
+          color='#F97316'
           size={26}
         />
       </Pressable>

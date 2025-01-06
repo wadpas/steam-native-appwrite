@@ -1,17 +1,17 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
-import { router } from 'expo-router'
 
-import CustomButton from './CustomButton'
+const logo = require('../assets/images/empty.png')
 
 const EmptyState = () => {
   return (
     <View className='items-center justify-center flex-1'>
-      <Text className='text-white'>No books found</Text>
-      <CustomButton
-        title='Create new'
-        handlePress={() => router.push('/(tabs)/create')}
+      <Image
+        source={logo}
+        className='w-2 h-2 my-4'
+        resizeMode='contain'
       />
+      <Text className='text-white'>No books found</Text>
     </View>
   )
 }

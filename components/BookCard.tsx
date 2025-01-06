@@ -14,7 +14,7 @@ const BookCard = ({ book: { title, author, year, genre, cover, description } }: 
       <Text className='italic font-light text-gray-100 '>{genre}</Text>
       <Image
         source={{ uri: cover }}
-        className='my-2 w-96 h-96'
+        className='my-4 w-96 h-96'
         resizeMode='contain'
       />
       <Text className='text-xs text-gray-100 '>{description}</Text>
