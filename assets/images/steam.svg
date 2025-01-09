@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<svg width="115" height="50" viewBox="0 0 115 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="345" height="150" viewBox="0 0 115 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <title>Steam Deck logo</title>
 	<path fill-rule="evenodd" clip-rule="evenodd" d="M28.1744 24.6928C28.1744 15.9508 21.0877 8.86409 12.3457 8.86409V0C25.9832 0 37.0385 11.0553 37.0385 24.6928C37.0385 38.3303 25.9832 49.3856 12.3457 49.3856V40.5215C21.0877 40.5215 28.1744 33.4348 28.1744 24.6928Z" fill="#000000"></path>
 	<circle cx="12.3464" cy="24.7191" r="12.3464" fill="url(#paint0_linear)"></circle>
@@ -10,8 +9,8 @@
 	<path d="M107.794 28.5879L112.395 18.0713H114.964V32.0138H112.554V22.513L108.471 31.715H106.877L102.735 22.6126V32.0138H100.424V18.0713H102.874L107.794 28.5879Z" fill="#000000"></path>
 	<defs>
 	<linearGradient id="paint0_linear" x1="-9.5" y1="16.9323" x2="19.5" y2="30.9323" gradientUnits="userSpaceOnUse">
-	<stop offset="0.106991" stop-color="#C957E6"></stop>
-	<stop offset="1" stop-color="#1A9FFF"></stop>
+	<stop offset="0.106991" stop-color="#1D4ED8"></stop>
+	<stop offset="1" stop-color="#0061FF"></stop>
 	</linearGradient>
 	</defs>
 </svg>
